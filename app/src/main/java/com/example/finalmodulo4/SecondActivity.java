@@ -35,7 +35,8 @@ public class SecondActivity extends AppCompatActivity {
         binding.btnWsp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent wspWeb = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.whatsapp.com/"));
+                Intent wspWeb = new Intent(Intent.ACTION_DIAL);
+                wspWeb.setData(Uri.parse("tel:+56984769464"));
                 startActivity(wspWeb);
             }
         });
@@ -45,17 +46,12 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String msj = binding.editMensaje.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("APP:"));
-                intent.putExtra(Intent.EXTRA_SUBJECT,"contacto");
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_EMAIL, "email@address.com");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Asunto del mensaje");
                 intent.putExtra(Intent.EXTRA_TEXT, msj);
-
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                    Toast.makeText(getBaseContext(),"Mensaje enviado", Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getBaseContext(),"Mensaje No enviado", Toast.LENGTH_LONG).show();
-                }
+                startActivity(Intent.createChooser(intent, "Enviar correo electrónico a través de: "));
 
             }
         });

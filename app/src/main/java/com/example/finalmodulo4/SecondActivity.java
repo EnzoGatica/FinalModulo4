@@ -46,12 +46,21 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String msj = binding.editMensaje.getText().toString();
+                String[] to= {"enzogatica96@gmail.com"};
+
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_EMAIL, "email@address.com");
+
+                //intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, to);
+                intent.putExtra(Intent.EXTRA_CC, "");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Asunto del mensaje");
+
                 intent.putExtra(Intent.EXTRA_TEXT, msj);
+
                 startActivity(Intent.createChooser(intent, "Enviar correo electrónico a través de: "));
+
+
 
             }
         });

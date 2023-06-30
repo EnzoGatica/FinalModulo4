@@ -36,7 +36,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent wspWeb = new Intent(Intent.ACTION_DIAL);
-                wspWeb.setData(Uri.parse("tel:+56984769464"));
+                wspWeb.setData(Uri.parse("tel:+56977777777"));
                 startActivity(wspWeb);
             }
         });
@@ -46,7 +46,7 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String msj = binding.editMensaje.getText().toString();
-                String[] to= {"enzogatica96@gmail.com"};
+                String[] to= {"correo@gmail.com"};
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
